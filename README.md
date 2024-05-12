@@ -1,4 +1,4 @@
-![image](https://github.com/NatanGPS/Desafio_Dados/assets/94939074/4cb644dd-0ceb-436e-a7c6-53f36cb11cb8)# Documentação Case Técnico 
+# Documentação Case Técnico 
 ## Primeira etapa:
 
 ### Definindo ferramentas que serão utilizadas
