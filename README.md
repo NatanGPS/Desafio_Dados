@@ -19,7 +19,7 @@
 
 <img src="https://media.discordapp.net/attachments/971178165479301134/1238830743862644827/image.png?ex=6640b689&is=663f6509&hm=dbba4ea4352414a96d3483093b98e058452e872f29e63570cdce7dbddefd06e7&=&format=webp&quality=lossless&width=1253&height=671" alt="" width="1000" height="400"><br>
 
-<br> Vou repetir exatamente o mesmo proceso para as demais tabelas.
+<br> Vou repetir exatamente o mesmo processo para as demais tabelas.
 
 ### Definindo o que são fatores de riscos e como serão classificados
 <br> Com 3 tabelas extensas dessas não conseguimos saber ao certo quais informações serão vitais para avaliar nossos clientes, como não recebi instruções especificas sobre quais deveria usar, tomei a liberdade de pesquisar mais a fundo sobre como empresas de credito e seguro avaliam seus possiveis clientes. Sabendo disso, resolvi separar apenas as colunas que iria usar a fim de fazer uma tabela menor somente com os dados que irei utilizar, ficou da seguinte forma: CPF, IDADE, SERVIDOR PUBLICO, CHANCE EMPREGATICIA, RENDA ESTIMADA, TOTAL DE PROCESSOS, POSSUI EMPRESA, FATURAMENTO ESTIMADO. Com uma pequena consulta SQL pude separar isso em uma tabela só, além disso foi possivel por meio da consulta filtrar e preparar algumas colunas para que posteriormente fossem totalmente limpas de valores incorretos e nulos. Segue a consulta que utilizei
