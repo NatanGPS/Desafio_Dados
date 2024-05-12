@@ -52,4 +52,71 @@
     WHERE 
       j.tipo = 'NUMERO DE PROCESSOS'
 
-<br> Perceba que, nos comando REPLACE que utilizei, deixei  a letra A nos campos que possuiam mais de um valor, como por exemplo alguns valores da coluna "renda_estimada" que vinham dessa forma: "12000 A 20000", o fato de deixar a letra A me permite que posteriormente eu consiga fazer uma media dessa renda e substituir a linha por apenas um valor para que, dessa forma eu possa usar a linha ao meu favor, além disso, varios campos estavam com valor nulo, o que pode atrapalhar nas consultas analiticas que pretendo fazer, então pra resolver isso, upei a tabela 
+<br> Perceba que, nos comandos REPLACE que utilizei, deixei  a letra A nos campos que possuiam mais de um valor, como por exemplo alguns valores da coluna "renda_estimada" que vinham dessa forma: "12000 A 20000", o fato de deixar a letra A me permite que posteriormente eu consiga fazer uma media dessa renda e substituir a linha por apenas um valor para que, dessa forma, eu possa usar a linha ao meu favor, além disso, varios campos estavam com valor nulo, o que pode atrapalhar nas consultas analiticas que pretendo fazer, então pra resolver isso, upei a tabela no python e com algumas linhas de codigo fui resolvendo alguns problemas que observei na tabela, as linhas que utilizei pra essa correção foram as seguinte: (o arquivo tambem está anexado nesse protifolio)
+
+        # Primeira coisa que precisamos fazer é importar todos frameworks que vamos utilizar ao longo do projeto 
+        import pandas as pd
+        import matplotlib as plt
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+        import numpy as np
+        import warnings
+        warnings.filterwarnings("ignore")
+
+
+        from sklearn.model_selection import train_test_split # Utilizado para separar dados de treino e teste
+        from sklearn.preprocessing import StandardScaler # Utilizado para fazer a normalização dos dados
+        from sklearn.preprocessing import MinMaxScaler # Utilizado para fazer a normalização dos dados
+        from sklearn.preprocessing import LabelEncoder # Utilizado para fazer o OneHotEncoding
+        from sklearn.linear_model import LinearRegression # Algoritmo de Regressão Linear
+        from sklearn.metrics import r2_score # Utilizado para medir a acuracia do modelo preditivo
+
+
+
+        #Esses comandos permitem que nossa tabela apareça de forma completa sem limites (pode ser usado tambem para limilitar a tabela )
+        pd.set_option('display.max_columns', None)
+        pd.set_option('display.max_rows', None)
+
+        # Defino uma variavel para carregar todos os dados da minha tabela nela
+        df_dados = pd.read_csv("tabela_info.csv")
+
+        #print(df_dados.shape) # print para verificar escala da tabela
+        #print(df_dados.head()) #print para ver as primeiras linhas da tabela 
+        #print(df_dados.info()) # print pra saber volume de linhas por coluna
+        df_dados.drop('nome', axis=1, inplace=True)
+
+
+        # Essa pré análise é super importante pq podemos observar quais colunas podemos excluir, e quais devemos fazer um OneHotCoding por exemplo.
+        # aqui por exemplo posso perceber que muitas colunas da minha tabela estão salvas como objetos
+        # nesse caso preciso descobrir o problema na coluna para posteriormente transformalas em int ou float caso seja necessario
+
+
+        # Por exemplo, valores NaN ou Null precisam ser tratados de alguma forma 
+
+        #print(df_dados.isnull().sum())
+
+
+        df_dados['capital_social'] = df_dados['capital_social'].fillna(0)
+        df_dados['participacao'] = df_dados['participacao'].fillna(0)
+        df_dados['chance_empregaticia'] = df_dados['chance_empregaticia'].fillna("DESCONHECIDA")
+        df_dados['cnae'] = df_dados['cnae'].fillna("NAO EXiSTE")
+        df_dados['qualificacao'] = df_dados['qualificacao'].fillna("NÃO POSSUI")
+
+
+
+        # Função para calcular a média entre os valores antes e depois do "A"
+        def calcular_media(texto):
+            if isinstance(texto, str) and "A" in texto:
+                valores = texto.split("A")
+                numeros = [int(num) for num in valores if num.isdigit()]
+                if len(numeros) == 2:
+                     media = sum(numeros) / 2
+                    return str(media)
+            return texto
+
+        # Aplicar a função calcular_media nas colunas desejadas
+        df_dados['renda_estimada'] = df_dados['renda_estimada'].apply(calcular_media)
+        df_dados['faturamento_estimado'] = df_dados['faturamento_estimado'].apply(calcular_media)
+
+        # Salvar o DataFrame modificado em um novo arquivo CSV
+        df_dados.to_csv("tabela_filtrada3_modificada.csv", index=False)
