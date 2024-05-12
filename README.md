@@ -127,3 +127,10 @@
 
 ### Fazendo um modelo preditivo para análise de risco
 <br> Existem diversas formas de se fazer uma análise de risco, muitas empresas utilizam formulas proprias para fazer o calculo do score, no meu caso vou utilizar os dados presentes da nossa tabela e uma outra tabela de scores para que a IA possa aprender a fazer os calculos que se aproximem da tabela de score, dessa forma ela vai conseguir calcular um score de risco para cada pessoa e quanto maior for nossa tabela melhor será a exatidão do score calculado. Por enquanto estou upando a tabela manualmente, mas a ideia de utilizar um banco de dados é conectar o script diretamente ao banco para que, dessa forma, ele se atualize a cada atualização das tabelas. Sabendo disso podemos continuar nosso codigo, vamos continuar utilizando o mesmo codigo que usei logo acima, dessa forma, a cada atualização da tabela nossa filtragem dos valores indesejados permanece funcionando. A partir desse momento comecarei a fazer os comentarios pelo proprio codigo que irei anexar aqui, mas quando tiver uma função um pouco mais longa eu irei explicar por aqui
+
+
+### Considerações finais
+Após finalizar o codigo, pude perceber que, existe uma grande necessidade de encontrar dados que são mais relacionados entre si, e que, para um bom funcionamento da maquina, muitos dados teriam que ser colocados para que a maquina seja mais eficaz, provavelmente a melhor forma seria usa-la com uma visão mais a longo prazo, ou até mesmo utilizar uma outra forma de treinamento, mas o que pude perceber é que, pessoas com mais de 50 ano e menos que 80 e que ganham em média mais de 2000 são as que mais fizeram pontuação.
+
+
+Sei que o modelo é muito básico e poderia fazer apenas uma coisa mais básica no PowerBi ou ate mesmo no Metabase, mas a minha ideia foi mostrar um pouco de tudo que sei e, de certa forma, mostrar a forma como eu penso quando estou resolvendo um problema como este. Agradeço a atenção e o tempo para ler até aqui, foi um teste muito legal de ser feito. Espero que gostem!
