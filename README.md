@@ -126,4 +126,4 @@
 <br> Pronto! Dessa forma nossa tabela está finalmente limpa, sem valores nullos ou incorretos, além de estarem com seu tipo correto. Agora precisamos fazer um modo de analisar os clientes.
 
 ### Fazendo um modelo preditivo para análise de risco
-<br>
+<br> Existem diversas formas de se fazer uma análise de risco, muitas empresas utilizam formulas proprias para fazer o calculo do score, no meu caso vou utilizar os dados presentes da nossa tabela e uma outra tabela de scores para que a IA possa aprender a fazer os calculos que se aproximem da tabela de score, dessa forma ela vai conseguir calcular um score de risco para cada pessoa e quanto maior for nossa tabela melhor será a exatidão do score calculado 
