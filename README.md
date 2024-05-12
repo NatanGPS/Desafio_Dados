@@ -22,3 +22,34 @@
 <br> Vou repetir exatamente o mesmo proceso para as demais tabelas.
 
 ### Definindo o que são fatores de riscos e como serão classificados
+<br> Com 3 tabelas extensas dessas não conseguimos saber ao certo quais informações serão vitais para avaliar nossos clientes, como não recebi instruções especificas sobre quais deveria usar, tomei a liberdade de pesquisar mais a fundo sobre como empresas de credito e seguro avaliam seus possiveis clientes. Sabendo disso, resolvi separar apenas as colunas que iria usar a fim de fazer uma tabela menor somente com os dados que irei utilizar, ficou da seguinte forma: CPF, IDADE, SERVIDOR PUBLICO, CHANCE EMPREGATICIA, RENDA ESTIMADA, TOTAL DE PROCESSOS, POSSUI EMPRESA, FATURAMENTO ESTIMADO. Com uma pequena consulta SQL pude separar isso em uma tabela só, além disso foi possivel por meio da consulta filtrar e preparar algumas colunas para que posteriormente fossem totalmente limpas de valores incorretos e nulos. Segue a consulta que utilizei
+
+    SELECT DISTINCT
+    ip.nome AS nome,
+    ip.cpf AS cpf,
+    ip.idade AS idade,
+    ip.servidor_publico AS servidor_publico,
+    ip.endereco_residencial AS chance_empregaticia,
+    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        ip.precisao, 'ATE', ''), 'DE', ''), 'ACIMA DE', ''), '.', ''), ',', ''), 'R$', ''), 'R', ''), ' A ', 'A'), ' ', ''), 'ACIMA', '')AS renda_estimada,
+    j.total AS total_processos,
+    s.cnae AS cnae,
+    s.qualificacao AS qualificacao,
+    s.participacao AS participacao,
+    s.capital_social AS capital_social,
+    REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+        s.faturamento_estimado, 'ATE', ''), 'DE', ''), 'ACIMA DE', ''), '.', ''), ',', ''), 'R$', ''), 'R', ''), ' A ', 'A'), ' ', ''), 'ACIMA', '')AS faturamento_estimado
+    FROM 
+      informacoes_pessoais ip
+    JOIN 
+      judiciario j
+    ON 
+      ip.cpf = j.id
+    JOIN 
+      societario s
+    ON 
+      j.id = s.id
+    WHERE 
+      j.tipo = 'NUMERO DE PROCESSOS'
+
+<br> Perceba que, nos comando REPLACE que utilizei, deixei  a letra A nos campos que possuiam mais de um valor, como por exemplo alguns valores da coluna "renda_estimada" que vinham dessa forma: "12000 A 20000", o fato de deixar a letra A me permite que posteriormente eu consiga fazer uma media dessa renda e substituir a linha por apenas um valor para que, dessa forma eu possa usar a linha ao meu favor, além disso, varios campos estavam com valor nulo, o que pode atrapalhar nas consultas analiticas que pretendo fazer, então pra resolver isso, upei a tabela 
