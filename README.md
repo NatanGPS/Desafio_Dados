@@ -120,3 +120,10 @@
 
         # Salvar o DataFrame modificado em um novo arquivo CSV
         df_dados.to_csv("tabela_filtrada3_modificada.csv", index=False)
+
+
+
+<br> Pronto! Dessa forma nossa tabela está finalmente limpa, sem valores nullos ou incorretos, além de estarem com seu tipo correto. Agora precisamos fazer um modo de analisar os clientes.
+
+### Fazendo um modelo preditivo para análise de risco
+<br>
