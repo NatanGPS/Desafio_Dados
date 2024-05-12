@@ -9,7 +9,7 @@
 <img src="https://media.discordapp.net/attachments/971178165479301134/1238826266807767101/image.png?ex=6640b25e&is=663f60de&hm=85194ced1472c7835c85bfc32ff94349cef374bd51c7a04b6b7beb331effcdd1&=&format=webp&quality=lossless&width=500&height=350" alt="" width="650" height="400"><br>
 
 <br> Tendo em vista os espaços que estão vazios e as possiveis irregularidades em alguma linha ou coluna, podemos configurar a filtragem para corrigir automaticamente esses erros.
-<br> Com todos as irregularidades resolvidas podemos subir nossa tabela para o banco de dados, nesse dasafio, optei por usar o banco de dados PostgreSQl.
+<br> Com todos as irregularidades resolvidas podemos subir nossa tabela para o banco de dados, nesse desafio, optei por usar o banco de dados PostgreSQl.
 
 <br> No final do processo a pipeline ficou da seguinte forma:
 
