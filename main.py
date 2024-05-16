@@ -7,7 +7,7 @@ import numpy as np
 import warnings
 warnings.filterwarnings("ignore")
 
-
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split # Utilizado para separar dados de treino e teste
 from sklearn.preprocessing import StandardScaler # Utilizado para fazer a normalização dos dados
 from sklearn.preprocessing import MinMaxScaler # Utilizado para fazer a normalização dos dados
