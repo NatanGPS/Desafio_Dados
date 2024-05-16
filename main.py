@@ -205,7 +205,7 @@ X_teste_normalizados = sc.transform(X_teste)
 #Pronto com nossa divisão de teste e treinos feitas, podemos começar a treinar e avaliar nosso modelo preditivo
 
 
-modelo = LinearRegression()
+modelo = RandomForestRegressor()
 modelo = modelo.fit(X_treino_normalizados, y_treino)
 
 print(r2_score(y_teste, modelo.fit(X_treino_normalizados, y_treino).predict(X_teste_normalizados))) 
